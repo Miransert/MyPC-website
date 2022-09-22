@@ -62,6 +62,7 @@ To summarize:
  - `div.hello.world` refers to a `div` with a class of `hello` and `world`
  - You can read more [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector).
 
+**Important**, when referencing files in the public folder, use the `{{ asset('file') }}` method.
 
 ### Files of significance
 
@@ -106,19 +107,19 @@ The structure explained above can also be seen here:
 
 ### Requirements
 
-| Name                              | Description                                                                                                              |
-|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| Title                             | The title of the HTML page should contain "MyPC"                                                                         |
-| Logo goes to /                    | Change the link in the <nav> such that it redirects to the home page (/)                                                |
-| Create `main`                     | Create a `<main>` element that can contain your computers                                                                |
-| `<main>` uses grid display style  | Set the display style to `grid` for the `<main>`element.                                                                 |
-| PC element                        | Create two `.pc` elements within the `<main>` element                                                                    |
-| PC shows image                    | Create an image showing the computer within `.pc`.                                                                       |
-| PC shows title                    | Create an `<h2>` within `.pc` that display the name of the computer                                                      |
-| PC shows an introduction          | Create a `<p>` that display an introductory text about the computer                                                      |
-| PC shows a list of specifications | Create a `<ul>` with some list items with the specs of the computer.                                                     |
-| PC shows a details link           | Create an `<a>` that redirects the user to details page of the computer. This `<a>` should have the class `details-link` |
-| Matching styles                   | The background color of the <nav> should match the background color of the `a.details-link`                             |
+| Name                              | Description                                                                                                              | Tests |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------|------|
+| Title                             | The title of the HTML page should contain "MyPC"                                                                         | `php artisan dusk --filter IndexTest::testTitle` |
+| Logo goes to /                    | Change the link in the <nav> such that it redirects to the home page (/)                                                | `php artisan dusk --filter IndexTest::testLogoGoesToHomePage` |
+| Create `main`                     | Create a `<main>` element that can contain your computers                                                                | Combined with requirement below |
+| `<main>` uses grid display style  | Set the display style to `grid` for the `<main>`element.                                                                 | `php artisan dusk --filter IndexTest::testHasMainWithGrid` |
+| PC element                        | Create two `.pc` elements within the `<main>` element                                                                    | `php artisan dusk --filter IndexTest::testMainHasTwoPCs` |
+| PC shows image                    | Create an image showing the computer within `.pc`.                                                                       | `php artisan dusk --filter IndexTest::testEachPCHasTheirRespectiveImage` |
+| PC shows title                    | Create an `<h2>` within `.pc` that display the name of the computer                                                      | `php artisan dusk --filter IndexTest::testEachPCHasAH2Title` |
+| PC shows an introduction          | Create a `<p>` that display an introductory text about the computer                                                      | `php artisan dusk --filter IndexTest::testEachPCHasAParagraph` |
+| PC shows a list of specifications | Create a `<ul>` with some list items with the specs of the computer.                                                     | `php artisan dusk --filter IndexTest::testEachPCHasAListOfSpecs` |
+| PC shows a details link           | Create an `<a>` that redirects the user to details page of the computer. This `<a>` should have the class `details-link` | `php artisan dusk --filter IndexTest::testEachPCRedirectsToTheirRespectivePage` |
+| Matching styles                   | The background color of the <nav> should match the background color of the `a.details-link`                             | `php artisan dusk --filter IndexTest::testColorsMatch` |
 
 ## TheGigaChad 2000 Page
 
@@ -152,18 +153,18 @@ The structure can be seen here:
 
 ![structure](assets/gigachad-structure.png)
 
-| Name                             | Description                                                                                                                           |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| Title                            | The title of the HTML page should contain "MyPC" and "The GigaChad 2000"                                                              |
-| Logo goes to /                   | Change the link in the `nav` such that it redirects to the home page (/)                                                             |
-| Update `main`                    | Update the `<main>` element to have the class `details-area`.                                                                         |
-| `<main>` uses flex display style | Set the display style to `flex` for the `<main>`element.                                                                              |
-| Image                            | Create an image with id `pc-image` that shows the image of the GigaChad (`pc1.png`).                                                  |
-| Title                            | Create an `<h1>` that display the name of the computer                                                                                |
-| Introduction                     | Create a `<p>` that display an introductory text about the computer                                                                   |
-| List of specifications           | Create a `<ul>` with some list items with the specs of the computer.                                                                  |
-| Add to cart                      | Create a `<button>` with id `add-to-cart` that increments the _in cart counter_.                                                      |
-| Matching styles                  | The color of the `h1` title and the background color of the _add to cart_ button should have the same background-color as the `nav`. |
+| Name                             | Description                                                                                                                           | Tests |
+|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|-------|
+| Title                            | The title of the HTML page should contain "MyPC" and "The GigaChad 2000"                                                              | `php artisan dusk --filter GigaChadTest::testTitle` |
+| Logo goes to /                   | Change the link in the `nav` such that it redirects to the home page (/)                                                             | `php artisan dusk --filter GigaChadTest::testLogoGoesToHomePage` |
+| Update `main`                    | Update the `<main>` element to have the class `details-area`.                                                                         | `php artisan dusk --filter GigaChadTest::testMainElementExists` |
+| `<main>` uses flex display style | Set the display style to `flex` for the `<main>`element.                                                                              | `php artisan dusk --filter GigaChadTest::testMainElementUsesFlexbox` |
+| Image                            | Create an image with id `pc-image` that shows the image of the GigaChad (`pc1.png`).                                                  | `php artisan dusk --filter GigaChadTest::testPCImageWithinDetailsArea` |
+| Title                            | Create an `<h1>` that display the name of the computer                                                                                | `php artisan dusk --filter GigaChadTest::testH1TitleWithinDetailsArea` |
+| Introduction                     | Create a `<p>` that display an introductory text about the computer                                                                   | `php artisan dusk --filter GigaChadTest::testParagraphWithinDetailsArea` |
+| List of specifications           | Create a `<ul>` with some list items with the specs of the computer.                                                                  | `php artisan dusk --filter GigaChadTest::testStatListWithinDetailsArea` |
+| Add to cart                      | Create a `<button>` with id `add-to-cart` that increments the _in cart counter_.                                                      | `php artisan dusk --filter GigaChadTest::testAddToCart` |
+| Matching styles                  | The color of the `h1` title and the background color of the _add to cart_ button should have the same background-color as the `nav`. | `php artisan dusk --filter GigaChadTest::testColorsMatch` |
 
 ## The PlebBoi Page
 ![index](assets/plebboi.png)
@@ -191,12 +192,12 @@ The structure of this page can be seen here:
 
 The requirements use and builds upon the requirements in the `The GigaChad section`, with changed values to reflect the PlebBoi. 
 
-| Name                   | Description                                                                                                                                                    |
-|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Title                  | The title of the HTML page should contain "MyPC" and "The PlebBoi"                                                                                             |
-| Color Picker element   | Create an element within the `main.details-area` with the id `color-picker`                                                                                    |
-| Label                  | Create a label within `#color-picker` that says `Pick color` and binds to the select element                                                                   |
-| Select                 | Create a select with an id of `color`                                                                                                                          |
-| Select options         | Create four `option` elements within the `select#color`. One that defaults to `none` and one for each color `red`, `green` and `blue` with a respective value. |
-| Select events          | When the select changes to one of the three colors the `img#pc-image` should be updated to reflect the color chosen.                                           |
-| Add to cart validation | The pc can only be added to cart if a color is chosen. Display an `alert` to the user indicating this and prevent the _in cart counter_ from incrementing.     |
+| Name                   | Description                                                                                                                                                    | Tests |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
+| Title                  | The title of the HTML page should contain "MyPC" and "The PlebBoi"                                                                                             | `php artisan dusk --filter PlebBoiTest::testTitle` |
+| Color Picker element   | Create an element within the `main.details-area` with the id `color-picker`                                                                                    | Combined with below |
+| Label                  | Create a label within `#color-picker` that says `Pick color` and binds to the select element                                                                   | Combined with below |
+| Select                 | Create a select with an id of `color`                                                                                                                          | `php artisan dusk --filter PlebBoiTest::testColorPickerWithinDetailsArea` |
+| Select options         | Create four `option` elements within the `select#color`. One that defaults to `none` and one for each color `red`, `green` and `blue` with a respective value. | Combined with below |
+| Select events          | When the select changes to one of the three colors the `img#pc-image` should be updated to reflect the color chosen.                                           | `php artisan dusk --filter PlebBoiTest::testRedVariant`, `php artisan dusk --filter PlebBoiTest::testGreenVariant`, `php artisan dusk --filter PlebBoiTest::testBlueVariant` | 
+| Add to cart validation | The pc can only be added to cart if a color is chosen. Display an `alert` to the user indicating this and prevent the _in cart counter_ from incrementing.     | `php artisan dusk --filter PlebBoiTest::testNoVariantSelect` |

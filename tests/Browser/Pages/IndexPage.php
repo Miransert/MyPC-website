@@ -43,7 +43,7 @@ class IndexPage extends Page
 
     public function testLogoGoesToHomePage(Browser $browser)
     {
-        $browser->assertAttribute('nav a#logo', 'href', '/');
+        $browser->assertPresent('nav a#logo')->click('nav #logo')->assertPathIs('/');
     }
 
     public function testTitle(Browser $browser)
@@ -96,15 +96,15 @@ class IndexPage extends Page
     {
         $browser->assertPresent('main .pc:nth-child(1) a.details-link')
             ->assertPresent('main .pc:nth-child(2) a.details-link')
-            ->assertAttributeContains('main .pc:nth-child(1) a.details-link', 'href', 'plebboi')
-            ->assertAttributeContains('main .pc:nth-child(1) a.details-link', 'href', 'gigachad');
+            ->click('main .pc:nth-child(1) a.details-link')->assertPathIs('/gigachad')
+            ->visit('/')
+            ->click('main .pc:nth-child(2) a.details-link')->assertPathIs('/plebboi');
     }
 
     public function testStyles(Browser $browser)
     {
         $navBarColor = $browser->element('nav')->getCSSValue('background-color');
         $buttons = $browser->elements('a.details-link');
-        PHPUnit::assertCount(2, $buttons, 'Expected two links, one for each pc, but ' . count($buttons) . ' was found.');
         foreach($buttons as $button) {
             PHPUnit::assertEquals($navBarColor, $button->getCSSValue('background-color'), 'Expected navbar and details link to have the same color');
         }

@@ -43,7 +43,7 @@ class PlebBoiPage extends Page
 
     public function testLogoGoesToHomePage(Browser $browser)
     {
-        $browser->assertAttribute('nav a#logo', 'href', '/');
+        $browser->assertPresent('nav a#logo')->click('nav #logo')->assertPathIs('/');
     }
 
     public function testDetailsMainExists(Browser $browser)

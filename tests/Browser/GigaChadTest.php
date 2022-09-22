@@ -72,6 +72,14 @@ class GigaChadTest extends DuskTestCase
         });
     }
 
+    public function testAddToCart()
+    {
+        $this->browse(function(Browser $browser) {
+            $browser->visit(new GigaChadPage())
+               ->testAddToCart();
+        });
+    }
+
     public function testColorsMatch()
     {
         $this->browse(function(Browser $browser) {
@@ -79,6 +87,5 @@ class GigaChadTest extends DuskTestCase
                 ->testStyles();
         });
     }
-
 
 }

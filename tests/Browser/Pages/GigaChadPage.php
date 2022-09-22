@@ -43,7 +43,7 @@ class GigaChadPage extends Page
 
     public function testLogoGoesToHomePage(Browser $browser)
     {
-        $browser->assertAttribute('nav a#logo', 'href', '/');
+        $browser->assertPresent('nav a#logo')->click('nav #logo')->assertPathIs('/');
     }
 
     public function testDetailsMainExists(Browser $browser)
@@ -53,7 +53,6 @@ class GigaChadPage extends Page
 
     public function testMainElementUsesFlexbox(Browser $browser)
     {
-        $browser->assertPresent('main.details-area');
         $display = $browser->element('main.details-area')->getCSSValue('display');
         PHPUnit::assertEquals('flex', $display, "Expected main.details-area to use the \"flex\" display style, but it uses \"$display\".");
     }
@@ -84,6 +83,14 @@ class GigaChadPage extends Page
     {
         $browser->assertTitleContains('The GigaChad 2000')
             ->assertTitleContains('MyPC');
+    }
+
+    public function testAddToCart(Browser $browser)
+    {
+        $browser
+            ->assertSeeIn('#cart-count', "0")
+            ->click('button#add-to-cart')
+            ->assertSeeIn('#cart-count', "1");
     }
 
     public function testStyles(Browser $browser)

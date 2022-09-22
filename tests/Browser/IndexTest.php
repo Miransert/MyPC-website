@@ -80,4 +80,12 @@ class IndexTest extends DuskTestCase
                 ->testTitle();
         });
     }
+
+    public function testEachPCRedirectsToTheirRespectivePage()
+    {
+        $this->browse(function(Browser $browser) {
+            $browser->visit(new IndexPage())
+                ->testEachPCRedirectsToTheirRespectivePage();
+        });
+    }
 }
