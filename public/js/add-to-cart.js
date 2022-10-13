@@ -6,7 +6,7 @@ if(window.location.pathname == '/plebboi') {
     selection.onchange = (ev) => {
         const index = selection.selectedIndex;
         const countryCode = selection.value.pcCode;
-        image.src = window.location.origin + `${selection.value}.png`
+        image.src = window.location.origin + `/img/plebboi/${selection.value}.png`
     };
 
     function increment(){
