@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <button onclick="increment()" class="button-blade2" id="add-to-cart">Add to cart</button>
-                <img class="pc-blade" id="pc-image" src="http://localhost:8000/img/pc2.png">
+                <img class="pc-blade" id="pc-image" src="{{ asset('img/pc2.png') }}">
             </div>
     </main>
 </section>

@@ -34,7 +34,7 @@
                     <li>Supports more than one monitor</li>
                 </ul>
                 <button onclick="increment()" class="button-blade" id="add-to-cart">Add to cart</button>
-                <img id="pc-image" class="pc-blade" src="http://localhost:8000/img/pc1.png">
+                <img id="pc-image" class="pc-blade" src="{{ asset('img/pc1.png') }}">
             </div>
     </main>
 </section>

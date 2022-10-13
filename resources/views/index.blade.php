@@ -34,7 +34,7 @@
                 </ul>
                 <p class="stock">Only 3 in stock!</p>
                 <a href="gigachad" class="details-link"><button class="button">Gimme</button></a>
-                <img class="pc" src="http://localhost:8000/img/pc1.png">
+                <img class="pc" src="{{ asset('img/pc1.png') }}">
             </div>
 
             <div id="pc22" class="pc">
@@ -49,7 +49,7 @@
                 </ul>
                 <p class="stock">Only 57 in stock!</p>
                 <a href="plebboi" class="details-link"><button class="button">Gimme</button></a>
-                <img class="pc" src="http://localhost:8000/img/pc2.png">
+                <img class="pc" src="{{ asset('img/pc2.png') }}">
             </div>
 
         </main>
